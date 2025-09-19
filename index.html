@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pradyut Parva 2</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&display=swap');
+        @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css');
+
+        @font-face {
+          font-family: 'Compressa VF';
+          src: url('https://res.cloudinary.com/dr6lvwubh/raw/upload/v1529908256/CompressaPRO-GX.woff2');
+          font-style: normal;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0c0b1d;
+            color: #e2e8f0;
+            display: flex;
+            justify-content: center;
+            min-height: 100vh;
+            position: relative;
+        }
+        
+        .main-content-area {
+            min-height: calc(100vh - 7rem); /* Full height minus header */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .gradient-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 10% 90%, #8b5cf6, transparent 50%),
+                        radial-gradient(circle at 90% 10%, #ec4899, transparent 50%);
+            filter: blur(120px);
+            opacity: 0.7;
+            animation: moveGradient 20s infinite alternate;
+            z-index: -1;
+        }
+
+        @keyframes moveGradient {
+            0% { transform: scale(1.5) translate(0, 0); }
+            50% { transform: scale(1.7) translate(20%, -20%); }
+            100% { transform: scale(1.5) translate(-20%, 20%); }
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .team-card {
+            height: 300px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .stat-card {
+             background: rgba(139, 92, 246, 0.1);
+        }
+
+        .btn-primary {
+            background-image: linear-gradient(to right, #8b5cf6, #ec4899);
+            box-shadow: 0 4px 15px rgba(139, 92, 246, 0.5);
+            transition: all 0.3s ease-in-out;
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(139, 92, 246, 0.7);
+        }
+        
+        .btn-secondary {
+            border: 2px solid #a855f7;
+            transition: all 0.3s ease-in-out;
+        }
+        .btn-secondary:hover {
+            background-color: rgba(168, 85, 247, 0.1);
+            transform: translateY(-2px);
+        }
+        
+        .header-nav {
+             background: rgba(20, 19, 38, 0.8);
+             backdrop-filter: blur(10px);
+             border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Styles for TextPressure effect */
+        .text-pressure-title {
+          font-family: 'Compressa VF', sans-serif;
+          text-transform: uppercase;
+          transform-origin: center top;
+          margin: 0;
+          text-align: center;
+          user-select: none;
+          white-space: nowrap;
+          font-weight: 100;
+          width: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          color: #FFFFFF;
+        }
+        .text-pressure-title span {
+            display: inline-block;
+        }
+    </style>
+</head>
+<body class="overflow-x-hidden">
+
+    <div class="flex flex-col items-center justify-start min-h-screen relative w-full pt-28">
+        <div class="gradient-bg"></div>
+
+        <header class="w-full fixed top-0 left-0 right-0 flex items-center justify-center p-4 z-50">
+            <div class="w-full max-w-7xl flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                    <img src="/Users/darshanr/Downloads/Group Logo.png" alt="Left Logo 1" class="h-20 w-20 object-contain"/>
+                    <img src="/Users/darshanr/Downloads/College Logo 2.png" alt="Left Logo 2" class="h-20 w-20 object-contain hidden sm:flex"/>
+                </div>
+                <nav class="header-nav hidden md:flex items-center p-2 space-x-2 rounded-full">
+                    <button data-target="home" class="nav-button capitalize text-sm px-4 py-2 rounded-full transition-colors duration-300 bg-purple-600 text-white">Home</button>
+                    <button data-target="about" class="nav-button capitalize text-sm px-4 py-2 rounded-full transition-colors duration-300 text-gray-400 hover:bg-white hover:bg-opacity-10">About</button>
+                    <button data-target="events" class="nav-button capitalize text-sm px-4 py-2 rounded-full transition-colors duration-300 text-gray-400 hover:bg-white hover:bg-opacity-10">Events</button>
+                    <button data-target="team" class="nav-button capitalize text-sm px-4 py-2 rounded-full transition-colors duration-300 text-gray-400 hover:bg-white hover:bg-opacity-10">Team</button>
+                    <button data-target="gallery" class="nav-button capitalize text-sm px-4 py-2 rounded-full transition-colors duration-300 text-gray-400 hover:bg-white hover:bg-opacity-10">Gallery</button>
+                    <button data-target="contact" class="nav-button capitalize text-sm px-4 py-2 rounded-full transition-colors duration-300 text-gray-400 hover:bg-white hover:bg-opacity-10">Contact</button>
+                </nav>
+
+                <div class="flex items-center gap-3">
+                    <img src="/Users/darshanr/Downloads/logo-masterbrand-tagline-white-transparent.webp" alt="Right Logo 1" class="h-16 w-16 object-contain hidden sm:flex"/>
+                    <img src="/Users/darshanr/Downloads/ieee_bangalore_section-removebg-preview.png" alt="Right Logo 2" class="h-20 w-20 object-contain"/>
+                </div>
+                </div>
+        </header>
+
+        <main class="main-content-area flex flex-col items-center w-full max-w-7xl px-4 sm:px-6 z-10">
+            
+            <div id="home" class="content-section flex flex-col items-center justify-center text-center h-full">
+                <div id="title-container" class="w-full flex justify-center items-center text-8xl sm:text-9xl md:text-[10rem] lg:text-[12rem] font-extrabold tracking-tight leading-none">
+                    <h1 id="title-effect" class="text-pressure-title" data-text="PRADYUT PARVA 2" data-min-font-size="80"></h1>
+                </div>
+                <p class="text-xl sm:text-2xl text-gray-200 mt-2">A LIGHT OF BRILLIANCE</p>
+                <p class="text-lg sm:text-xl text-gray-300 mt-4">14th & 15th OCTOBER 2025</p>
+                
+                <!-- Countdown Timer -->
+                <div id="countdown" class="flex justify-center gap-2 sm:gap-4 md:gap-8 mt-8 text-white">
+                    <div class="stat-card p-3 sm:p-4 rounded-xl sm:rounded-2xl text-center w-20 sm:w-24">
+                        <span id="days" class="text-3xl sm:text-4xl font-bold">00</span>
+                        <p class="text-xs sm:text-sm">Days</p>
+                    </div>
+                    <div class="stat-card p-3 sm:p-4 rounded-xl sm:rounded-2xl text-center w-20 sm:w-24">
+                        <span id="hours" class="text-3xl sm:text-4xl font-bold">00</span>
+                        <p class="text-xs sm:text-sm">Hours</p>
+                    </div>
+                    <div class="stat-card p-3 sm:p-4 rounded-xl sm:rounded-2xl text-center w-20 sm:w-24">
+                        <span id="minutes" class="text-3xl sm:text-4xl font-bold">00</span>
+                        <p class="text-xs sm:text-sm">Minutes</p>
+                    </div>
+                    <div class="stat-card p-3 sm:p-4 rounded-xl sm:rounded-2xl text-center w-20 sm:w-24">
+                        <span id="seconds" class="text-3xl sm:text-4xl font-bold">00</span>
+                        <p class="text-xs sm:text-sm">Seconds</p>
+                    </div>
+                </div>
+
+                <div class="flex flex-wrap items-center justify-center gap-4 mt-8">
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSdDX6gsHrEJKf8qDYbu5fOmXk5UeFi945z3SrKTcv7iDXzogg/viewform?usp=header" target="_blank" rel="noopener noreferrer">
+                        <button class="btn-primary text-white font-bold py-3 px-8 rounded-full text-lg">
+                            Register Now
+                        </button>
+                    </a>
+                    <button id="explore-events-btn" class="btn-secondary text-white font-bold py-3 px-8 rounded-full text-lg">
+                        Explore Events
+                    </button>
+                    <a href="/Users/darshanr/Downloads/DAY 1 EVENTS_20250917_182900_0000.pdf" target="_blank" rel="noopener noreferrer">
+                        <button class="btn-secondary text-white font-bold py-3 px-8 rounded-full text-lg">
+                           View Brochure
+                        </button>
+                    </a>
+                    <a href="https://chat.whatsapp.com/BVkGFvv6dQuBUOLU1wPvNw" target="_blank" rel="noopener noreferrer">
+                        <button class="bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-8 rounded-full text-lg transition-all duration-300 hover:transform hover:scale-105 flex items-center gap-2">
+                            <i class="fab fa-whatsapp text-xl"></i>
+                            Join WhatsApp
+                        </button>
+                    </a>
+                </div>
+            </div>
+
+            <div id="about" class="content-section hidden w-full max-w-5xl px-4 sm:px-6 z-10 text-center">
+                 <h2 class="text-4xl font-extrabold mb-10">About The Event</h2>
+                 <div class="card p-8 rounded-3xl">
+                     <p class="text-lg text-gray-300 leading-relaxed mb-8">
+                         Pradyut Parva 2 is the flagship technical symposium hosted by the IEEE Student Branch of Sairam College of Engineering. It's a two-day extravaganza celebrating technology, innovation, and collaborative spirit. We bring together the brightest minds from across the nation to compete, learn, and network. Our mission is to provide a platform for students to showcase their technical prowess, engage in challenging competitions, and get inspired by the latest trends in the industry.
+                     </p>
+                     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                         <div class="stat-card p-6 rounded-2xl">
+                             <h4 class="text-4xl font-bold text-purple-400">48h</h4>
+                             <p class="text-lg mt-2">Duration</p>
+                         </div>
+                         <div class="stat-card p-6 rounded-2xl">
+                             <h4 class="text-4xl font-bold text-pink-400">300+</h4>
+                             <p class="text-lg mt-2">Participants</p>
+                         </div>
+                         <div class="stat-card p-6 rounded-2xl">
+                             <h4 class="text-4xl font-bold text-blue-400">50K</h4>
+                             <p class="text-lg mt-2">Prize Pool</p>
+                         </div>
+                     </div>
+                 </div>
+            </div>
+
+            <div id="events" class="content-section hidden w-full max-w-7xl px-4 sm:px-6 z-10">
+                <h2 class="text-4xl font-extrabold text-center mb-10">Event Details</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 my-12 w-full">
+                    <div class="card p-6 rounded-3xl">
+                        <h3 class="text-3xl font-bold mb-4 border-b-2 border-purple-500 pb-2">Technical Events</h3>
+                        <ul class="space-y-4 text-left">
+                            <li class="flex items-center space-x-3"><i class="fas fa-laptop-code text-purple-400"></i><span>CODE SPRINT [HACKATHON]</span></li>
+                            <li class="flex items-center space-x-3"><i class="fas fa-robot text-purple-400"></i><span>ROBO RACE</span></li>
+                            <li class="flex items-center space-x-3"><i class="fas fa-lightbulb text-purple-400"></i><span>IDEA GALLERY [IDEATHON]</span></li>
+                            <li class="flex items-center space-x-3"><i class="fas fa-image text-purple-400"></i><span>VISUAL PITCH [POSTER DESIGN]</span></li>
+                            <li class="flex items-center space-x-3"><i class="fas fa-brain text-purple-400"></i><span>BRAIN BYTES [TECH QUIZ]</span></li>
+                            <li class="flex items-center space-x-3"><i class="fas fa-keyboard text-purple-400"></i><span>MIND CLASH [TECH DEBATE]</span></li>
+                            <li class="flex items-center space-x-3"><i class="fas fa-microchip text-purple-400"></i><span>TECH VISTA [PROJECT EXPO]</span></li>
+                            <li class="flex items-center space-x-3"><i class="fas fa-bolt text-purple-400"></i><span>ELECTRO FIX [CIRCUIT DEBUG]</span></li>
+                            <li class="flex items-center space-x-3"><i class="fas fa-globe text-purple-400"></i><span>SITE CRAFT [WEBPAGE CREATION]</span></li>
+                        </ul>
+                    </div>
+
+                    <div class="card p-6 rounded-3xl">
+                        <h3 class="text-3xl font-bold mb-4 border-b-2 border-blue-500 pb-2">Non-Tech Events</h3>
+                        <ul class="space-y-4 text-left">
+                            <li class="flex items-center space-x-3"><i class="fas fa-map-marker-alt text-blue-400"></i><span>QUEST HUNT [TREASURE HUNT]</span></li>
+                            <li class="flex items-center space-x-3"><i class="fas fa-camera text-blue-400"></i><span>CLICK ATHON [PHOTOGRAPHY]</span></li>
+                            <li class="flex items-center space-x-3"><i class="fas fa-gamepad text-blue-400"></i><span>FUN ARENA [GAMING]</span></li>
+                            <li class="flex items-center space-x-3"><i class="fas fa-paint-brush text-blue-400"></i><span>DESIGN CREST [LOGO DESIGN]</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div id="team" class="content-section hidden w-full max-w-6xl px-4 sm:px-6 z-10 text-center">
+                <h2 class="text-4xl font-extrabold mb-12">Meet The Team</h2>
+                
+                <!-- Organizing Committee Section -->
+                <div class="mb-16">
+                    <h3 class="text-2xl font-bold mb-8 text-purple-400">Organizing Committee</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        <div class="card team-card p-6 rounded-3xl text-center">
+                            <img src="/Users/darshanr/Downloads/2KDcYHqn_400x400.jpg" alt="Organizing Committee Member" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-purple-500"/>
+                            <h4 class="text-xl font-bold"> Dr.Sai Prakash LeoMuthu</h4>
+                            <p class="text-purple-400">Chairman & CEO <br> Sairam Institution</p>
+                        </div>
+                        <div class="card team-card p-6 rounded-3xl text-center">
+                            <img src="/Users/darshanr/Desktop/Screenshot 2025-09-19 at 11.25.18 AM.png" alt="Organizing Committee Member" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-purple-500"/>
+                            <h4 class="text-xl font-bold">Dr. R. ArunKumar</h4>
+                            <p class="text-purple-400">Chief Operating Officer <br> Sairam Institution</p>
+                        </div>
+                        <div class="card team-card p-6 rounded-3xl text-center">
+                            <img src="/Users/darshanr/Downloads/02.jpg" alt="Organizing Committee Member" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-purple-500"/>
+                            <h4 class="text-xl font-bold">Dr. B. Shadaksharappa</h4>
+                            <p class="text-purple-400">Principal SSCE</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Branch Counsellor Section -->
+                <div class="mb-16">
+                    <h3 class="text-2xl font-bold mb-8 text-blue-400">Branch Counsellor</h3>
+                    <div class="flex justify-center">
+                        <div class="card team-card p-6 rounded-3xl text-center">
+                            <img src="/Users/darshanr/Downloads/ECE/ECE Teaching/A.Poonguzhali.jpg" alt="Branch Counsellor" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-blue-500"/>
+                            <h4 class="text-xl font-bold">Dr. A.Poonguzhali</h4>
+                            <p class="text-blue-400">Branch Counselor</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Faculty Coordinators Section -->
+                <div class="mb-16">
+                    <h3 class="text-2xl font-bold mb-8 text-green-400">Faculty Coordinators</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div class="card team-card p-6 rounded-3xl text-center">
+                            <img src="/Users/darshanr/Downloads/ECE/ECE Teaching/Dr. P Narmatha.JPG" alt="Faculty Coordinator" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-green-500"/>
+                            <h4 class="text-xl font-bold">Dr. P Narmatha</h4>
+                            <p class="text-green-400">Associate Professor</p>
+                        </div>
+                        <div class="card team-card p-6 rounded-3xl text-center">
+                            <img src="/Users/darshanr/Downloads/WhatsApp Image 2025-09-19 at 11.34.39.jpeg" alt="Faculty Coordinator" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-green-500"/>
+                            <h4 class="text-xl font-bold">Dr. Ramya.K</h4>
+                            <p class="text-green-400"> Associate Professor</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Student Coordinators Section -->
+                <div class="mb-16">
+                    <h3 class="text-2xl font-bold mb-8 text-pink-400">Student Coordinators</h3>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                        <div class="card team-card p-6 rounded-3xl text-center">
+                            <img src="https://placehold.co/150x150/1a1a2e/ffffff?text=SC1" alt="Student Coordinator" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-pink-500"/>
+                            <h4 class="text-xl font-bold">Ponmudi E</h4>
+                            <p class="text-pink-400">Student Coordinator</p>
+                        </div>
+                        <div class="card team-card p-6 rounded-3xl text-center">
+                            <img src="https://placehold.co/150x150/1a1a2e/ffffff?text=SC2" alt="Student Coordinator" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-pink-500"/>
+                            <h4 class="text-xl font-bold">Santhosh P</h4>
+                            <p class="text-pink-400">Student Coordinator</p>
+                        </div>
+                        <div class="card team-card p-6 rounded-3xl text-center">
+                            <img src="https://placehold.co/150x150/1a1a2e/ffffff?text=SC3" alt="Student Coordinator" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-pink-500"/>
+                            <h4 class="text-xl font-bold">Sathiya S</h4>
+                            <p class="text-pink-400">Student Coordinator</p>
+                        </div>
+                        <div class="card team-card p-6 rounded-3xl text-center">
+                            <img src="https://placehold.co/150x150/1a1a2e/ffffff?text=SC4" alt="Student Coordinator" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-pink-500"/>
+                            <h4 class="text-xl font-bold">Monisha N</h4>
+                            <p class="text-pink-400">Student Coordinator</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="gallery" class="content-section hidden w-full max-w-7xl px-4 sm:px-6 z-10 text-center">
+                <h2 class="text-4xl font-extrabold mb-12">Gallery</h2>
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                    
+                    <div class="overflow-hidden rounded-2xl card"><img src="/Users/darshanr/Downloads/DSC_2415.JPG" alt="Event photo 1" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-300"/></div>
+                    <div class="overflow-hidden rounded-2xl card"><img src="/Users/darshanr/Downloads/DSC_2423.JPG" alt="Event photo 2" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-300"/></div>
+                    <div class="overflow-hidden rounded-2xl card"><img src="/Users/darshanr/Downloads/DSC_2478.JPG" alt="Event photo 3" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-300"/></div>
+                    <div class="overflow-hidden rounded-2xl card"><img src="/Users/darshanr/Downloads/DSC_2499.JPG" alt="Event photo 4" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-300"/></div>
+                    <div class="overflow-hidden rounded-2xl card"><img src="/Users/darshanr/Downloads/DSC_3062.JPG" alt="Event photo 5" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-300"/></div>
+                    <div class="overflow-hidden rounded-2xl card"><img src="/Users/darshanr/Downloads/WhatsApp Image 2025-09-19 at 11.53.02.jpeg" alt="Event photo 6" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-300"/></div>
+                    <div class="overflow-hidden rounded-2xl card"><img src="/Users/darshanr/Downloads/WhatsApp Image 2025-09-19 at 11.51.44.jpeg" alt="Event photo 7" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-300"/></div>
+                    <div class="overflow-hidden rounded-2xl card"><img src="/Users/darshanr/Downloads/WhatsApp Image 2025-09-19 at 11.51.43.jpeg" alt="Event photo 8" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-300"/></div>
+                    
+                </div>
+            </div>
+
+            <div id="contact" class="content-section hidden w-full max-w-4xl px-4 sm:px-6 z-10 text-center">
+                 <h2 class="text-4xl font-extrabold mb-10">Get In Touch</h2>
+                 <div class="card p-8 rounded-3xl text-left">
+                     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                         <div>
+                             <h3 class="text-2xl font-bold mb-4">Contact Us</h3>
+                             <p class="mb-2">
+                                 <i class="fas fa-map-marker-alt mr-2 text-purple-400"></i> 
+                                 <a href="https://maps.app.goo.gl/DBTdDrGQbST4XLzj6" target="_blank" rel="noopener noreferrer" class="text-purple-400 hover:text-purple-300 transition-colors duration-300 underline">
+                                     SSCE, Anekal, Gudnahalli
+                                 </a>
+                             </p>
+                             <div class="mt-4">
+                                 <a href="https://www.instagram.com/ieee.ssce?igsh=MXhyaDhscDE5eW5zYQ==" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-pink-400 hover:text-pink-300 transition-colors duration-300">
+                                     <i class="fab fa-instagram text-xl"></i>
+                                     <span>Ieee.ssce</span>
+                                 </a>
+                             </div>
+                         </div>
+                         <div>
+                             <h3 class="text-2xl font-bold mb-4">Faculty Coordinators</h3>
+                             <p class="font-bold">Dr. P. NARMATHA: <span class="font-normal text-gray-400">9790123202</span></p>
+                             <p class="font-bold">Dr. RAMYA K: <span class="font-normal text-gray-400">8050880659</span></p>
+                             <h3 class="text-2xl font-bold mt-4 mb-4">Student Coordinators</h3>
+                             <p class="font-bold">Ponmudi E: <span class="font-normal text-gray-400">6381263884</span></p>
+                             <p class="font-bold">Monisha N: <span class="font-normal text-gray-400">9442886344</span></p>
+                             <p class="font-bold">Santhosh P: <span class="font-normal text-gray-400">9360147054</span></p>
+                             <p class="font-bold">Sathiya S: <span class="font-normal text-gray-400">6382337733</span></p>
+                         </div>
+                     </div>
+                 </div>
+            </div>
+            
+        </main>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- Countdown Timer Logic ---
+            const countdownDate = new Date("Oct 14, 2025 09:00:00").getTime();
+            const daysEl = document.getElementById('days');
+            const hoursEl = document.getElementById('hours');
+            const minutesEl = document.getElementById('minutes');
+            const secondsEl = document.getElementById('seconds');
+            const countdownContainer = document.getElementById('countdown');
+
+            const countdownInterval = setInterval(() => {
+                const now = new Date().getTime();
+                const distance = countdownDate - now;
+
+                if (distance < 0) {
+                    clearInterval(countdownInterval);
+                    if(countdownContainer) {
+                        countdownContainer.innerHTML = `<div class="text-2xl font-bold text-center w-full card p-4 rounded-xl">The Event is Live!</div>`;
+                    }
+                    return;
+                }
+
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                if (daysEl) daysEl.textContent = days < 10 ? '0' + days : days;
+                if (hoursEl) hoursEl.textContent = hours < 10 ? '0' + hours : hours;
+                if (minutesEl) minutesEl.textContent = minutes < 10 ? '0' + minutes : minutes;
+                if (secondsEl) secondsEl.textContent = seconds < 10 ? '0' + seconds : seconds;
+
+            }, 1000);
+
+
+            // --- Navigation Logic ---
+            const navButtons = document.querySelectorAll('.nav-button');
+            const sections = document.querySelectorAll('.content-section');
+            const exploreButton = document.getElementById('explore-events-btn');
+
+            const showSection = (targetId) => {
+                sections.forEach(section => {
+                    if (section.id === targetId) {
+                        section.classList.remove('hidden');
+                    } else {
+                        section.classList.add('hidden');
+                    }
+                });
+
+                navButtons.forEach(button => {
+                    if (button.dataset.target === targetId) {
+                        button.classList.add('bg-purple-600', 'text-white');
+                        button.classList.remove('text-gray-400', 'hover:bg-white', 'hover:bg-opacity-10');
+                    } else {
+                        button.classList.remove('bg-purple-600', 'text-white');
+                        button.classList.add('text-gray-400', 'hover:bg-white', 'hover:bg-opacity-10');
+                    }
+                });
+                window.scrollTo(0, 0);
+            };
+
+            navButtons.forEach(button => {
+                button.addEventListener('click', () => showSection(button.dataset.target));
+            });
+
+            if (exploreButton) {
+                exploreButton.addEventListener('click', () => showSection('events'));
+            }
+
+            // --- TextPressure Effect Logic ---
+            const textEffectElement = document.getElementById('title-effect');
+            if (textEffectElement) {
+                const container = document.getElementById('title-container');
+                const title = textEffectElement;
+                const text = title.dataset.text || 'Compressa';
+                const minFontSize = parseInt(title.dataset.minFontSize, 10) || 24;
+                const chars = text.split('');
+                
+                let spans = [];
+                title.innerHTML = ''; // Clear original text
+                chars.forEach(char => {
+                    const span = document.createElement('span');
+                    span.textContent = char === ' ' ? '\u00A0' : char;
+                    title.appendChild(span);
+                    spans.push(span);
+                });
+
+                const mouse = { x: 0, y: 0 };
+                const cursor = { x: 0, y: 0 };
+                let rafId;
+
+                const dist = (a, b) => {
+                    const dx = b.x - a.x;
+                    const dy = b.y - a.y;
+                    return Math.sqrt(dx * dx + dy * dy);
+                };
+                
+                const setInitialMousePos = () => {
+                    if (container) {
+                        const { left, top, width, height } = container.getBoundingClientRect();
+                        mouse.x = left + width / 2;
+                        mouse.y = top + height / 2;
+                        cursor.x = mouse.x;
+                        cursor.y = mouse.y;
+                    }
+                };
+
+                const handleMouseMove = (e) => {
+                    cursor.x = e.clientX;
+                    cursor.y = e.clientY;
+                };
+
+                const handleTouchMove = (e) => {
+                    const t = e.touches[0];
+                    cursor.x = t.clientX;
+                    cursor.y = t.clientY;
+                };
+
+                window.addEventListener('mousemove', handleMouseMove);
+                window.addEventListener('touchmove', handleTouchMove, { passive: false });
+                
+                const setSize = () => {
+                    if (!container || !title) return;
+                    const { width: containerW } = container.getBoundingClientRect();
+                    let newFontSize = containerW / (chars.length / 2);
+                    newFontSize = Math.max(newFontSize, minFontSize);
+                    title.style.fontSize = `${newFontSize}px`;
+                };
+
+                const animate = () => {
+                    mouse.x += (cursor.x - mouse.x) / 15;
+                    mouse.y += (cursor.y - mouse.y) / 15;
+
+                    const titleRect = title.getBoundingClientRect();
+                    const maxDist = titleRect.width / 2;
+
+                    spans.forEach(span => {
+                        const rect = span.getBoundingClientRect();
+                        const charCenter = {
+                            x: rect.left + rect.width / 2,
+                            y: rect.top + rect.height / 2
+                        };
+
+                        const d = dist(mouse, charCenter);
+
+                        const getAttr = (distance, minVal, maxVal) => {
+                            const val = maxVal - Math.abs((maxVal * distance) / maxDist);
+                            return Math.max(minVal, val + minVal);
+                        };
+
+                        const wght = Math.floor(getAttr(d, 100, 900));
+                        const wdth = Math.floor(getAttr(d, 5, 200));
+                        const ital = getAttr(d, 0, 1).toFixed(2);
+                        
+                        span.style.fontVariationSettings = `'wght' ${wght}, 'wdth' ${wdth}, 'ital' ${ital}`;
+                    });
+
+                    rafId = requestAnimationFrame(animate);
+                };
+                
+                // Initial setup
+                setInitialMousePos();
+                setSize();
+                window.addEventListener('resize', setSize);
+                animate();
+            }
+        });
+    </script>
+</body>
+</html>
